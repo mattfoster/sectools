@@ -18,4 +18,4 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
       run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
     - name: Push container to the repo
-      run: docker push drmpf:mpf/sectools
+      run: docker push 'drmpf:mpf/sectools'
