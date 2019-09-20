@@ -13,6 +13,9 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/mattfoster/sectools/sectools
     - name: Login to the Github Docker registry
-      run: docker login docker.pkg.github.com
+      env:
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      run: docker login docker.pkg.github.com -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: Push container to the repo
       run: docker push docker.pkg.github.com/mattfoster/sectools/sectools
