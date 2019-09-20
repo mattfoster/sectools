@@ -12,10 +12,10 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/mattfoster/sectools/sectools
-    - name: Login to the Github Docker registry
+    - name: Login to the Docker registry
       env:
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      run: docker login docker.pkg.github.com -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_HUN_USERNAME }}
+      run: docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
     - name: Push container to the repo
-      run: docker push docker.pkg.github.com/mattfoster/sectools/sectools
+      run: docker push drmpf/sectools
