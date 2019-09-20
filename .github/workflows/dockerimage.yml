@@ -16,6 +16,6 @@ jobs:
       env:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
         DOCKER_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-      run: echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin
+      run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
     - name: Push container to the repo
-      run: docker push drmpf/sectools
+      run: docker push drmpf:mpf/sectools
