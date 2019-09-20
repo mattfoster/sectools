@@ -11,11 +11,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag drmpf:mpf/sectools
+      run: docker build . --file Dockerfile --tag drmpf/mpf:sectools
     - name: Login to the Docker registry
       env:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
         DOCKER_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
       run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
     - name: Push container to the repo
-      run: docker push 'drmpf:mpf/sectools'
+      run: docker push 'drmpf/mpf:sectools'
